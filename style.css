@@ -1,0 +1,248 @@
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+
+body{
+
+    font-family:Arial,Helvetica,sans-serif;
+    background:#e8f5ff;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    min-height:100vh;
+
+    padding:20px;
+
+}
+
+h1{
+
+    color:#0f4c75;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.container{
+
+    width:100%;
+    max-width:1200px;
+
+}
+
+
+
+#placeholders-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(13,50px);
+
+    justify-content:center;
+
+    gap:30px;
+
+    margin-bottom:60px;
+
+}
+
+.placeholder{
+
+    width:50px;
+    height:50px;
+
+    border:3px dashed #9bb8d3;
+
+    border-radius:12px;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    color:#7a8da3;
+
+    transition:.3s;
+
+}
+
+.placeholder.hovered{
+
+    background:#d9efff;
+
+    border-color:#1565c0;
+
+    transform:scale(1.08);
+
+}
+
+.placeholder.correct{
+
+    background:#b8f5b8;
+
+    border:3px solid green;
+
+}
+
+/* ===========================
+   RANDOM LETTER AREA
+=========================== */
+
+#letters-container{
+
+    position:relative;
+
+    width:100%;
+
+    height:400px;
+
+}
+
+/* ===========================
+   LETTERS
+=========================== */
+
+.letter{
+
+    position:absolute;
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:15px;
+
+    background:#1565c0;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    cursor:grab;
+
+    user-select:none;
+
+    transition:.2s;
+
+    box-shadow:0 6px 15px rgba(0,0,0,.25);
+
+}
+
+.letter:hover{
+
+    transform:scale(1.08);
+
+}
+
+.letter.dragging{
+
+    opacity:.5;
+
+}
+
+.letter:active{
+
+    cursor:grabbing;
+
+}
+
+/* ===========================
+   WIN MESSAGE
+=========================== */
+
+#message{
+
+    margin-top:30px;
+
+    font-size:35px;
+
+    color:green;
+
+    font-weight:bold;
+
+    display:none;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:900px){
+
+#placeholders-container{
+
+grid-template-columns:repeat(5,70px);
+
+}
+
+}
+
+@media(max-width:700px){
+
+#placeholders-container{
+
+grid-template-columns:repeat(4,70px);
+
+}
+
+.placeholder,
+.letter{
+
+width:60px;
+height:60px;
+font-size:28px;
+
+}
+
+}
+
+@media(max-width:500px){
+
+#placeholders-container{
+
+grid-template-columns:repeat(3,60px);
+
+}
+
+.placeholder,
+.letter{
+
+width:55px;
+height:55px;
+font-size:24px;
+
+}
+
+h1{
+
+font-size:22px;
+
+}
+
+}
