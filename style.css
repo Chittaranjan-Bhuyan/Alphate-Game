@@ -1,118 +1,78 @@
-
-
+/* ===========================
+   RESET
+=========================== */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-
-
 body{
-
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     background:#e8f5ff;
-
     display:flex;
     flex-direction:column;
     align-items:center;
-
     min-height:100vh;
-
-    padding:20px;
-
+    padding:15px;
 }
 
 h1{
-
     color:#0f4c75;
-
-    margin-bottom:30px;
-
+    text-align:center;
+    margin-bottom:20px;
+    font-size:2rem;
 }
-
-
 
 .container{
-
     width:100%;
     max-width:1200px;
-
-}
-
-
-
-#placeholders-container{
-
-    display:grid;
-
-    grid-template-columns:repeat(13,50px);
-
-    justify-content:center;
-
-    gap:30px;
-
-    margin-bottom:60px;
-
-}
-
-.placeholder{
-
-    width:50px;
-    height:50px;
-
-    border:3px dashed #9bb8d3;
-
-    border-radius:12px;
-
-    background:white;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:32px;
-
-    font-weight:bold;
-
-    color:#7a8da3;
-
-    transition:.3s;
-
-}
-
-.placeholder.hovered{
-
-    background:#d9efff;
-
-    border-color:#1565c0;
-
-    transform:scale(1.08);
-
-}
-
-.placeholder.correct{
-
-    background:#b8f5b8;
-
-    border:3px solid green;
-
 }
 
 /* ===========================
-   RANDOM LETTER AREA
+   PLACEHOLDERS
+=========================== */
+
+#placeholders-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(50px,1fr));
+    gap:12px;
+    justify-items:center;
+    margin-bottom:30px;
+}
+
+.placeholder{
+    width:50px;
+    height:50px;
+    border:3px dashed #9bb8d3;
+    border-radius:12px;
+    background:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    font-weight:bold;
+    color:#7a8da3;
+}
+
+.placeholder.hovered{
+    background:#d9efff;
+    border-color:#1565c0;
+}
+
+.placeholder.correct{
+    background:#b8f5b8;
+    border:3px solid green;
+}
+
+/* ===========================
+   LETTER AREA
 =========================== */
 
 #letters-container{
-
     position:relative;
-
     width:100%;
-
-    height:400px;
-
+    min-height:320px;
 }
 
 /* ===========================
@@ -120,129 +80,122 @@ h1{
 =========================== */
 
 .letter{
-
     position:absolute;
-
     width:50px;
-
     height:50px;
-
-    border-radius:15px;
-
+    border-radius:12px;
     background:#1565c0;
-
     color:white;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
-    font-size:32px;
-
+    font-size:28px;
     font-weight:bold;
-
     cursor:grab;
-
     user-select:none;
-
-    transition:.2s;
-
-    box-shadow:0 6px 15px rgba(0,0,0,.25);
-
-}
-
-.letter:hover{
-
-    transform:scale(1.08);
-
+    box-shadow:0 5px 12px rgba(0,0,0,.25);
 }
 
 .letter.dragging{
-
     opacity:.5;
-
-}
-
-.letter:active{
-
-    cursor:grabbing;
-
 }
 
 /* ===========================
-   WIN MESSAGE
+   MESSAGE
 =========================== */
 
 #message{
-
-    margin-top:30px;
-
-    font-size:35px;
-
+    margin-top:20px;
+    font-size:30px;
     color:green;
-
     font-weight:bold;
-
+    text-align:center;
     display:none;
-
 }
 
 /* ===========================
-   RESPONSIVE
+   TABLET
 =========================== */
 
-@media(max-width:900px){
+@media (max-width:768px){
 
-#placeholders-container{
+    h1{
+        font-size:1.6rem;
+    }
 
-grid-template-columns:repeat(5,70px);
+    #placeholders-container{
+        grid-template-columns:repeat(5,1fr);
+    }
 
+    .placeholder,
+    .letter{
+        width:55px;
+        height:55px;
+        font-size:26px;
+    }
+
+    #letters-container{
+        min-height:280px;
+    }
 }
 
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:480px){
+
+    body{
+        padding:10px;
+    }
+
+    h1{
+        font-size:1.2rem;
+    }
+
+    #placeholders-container{
+        grid-template-columns:repeat(4,1fr);
+        gap:10px;
+    }
+
+    .placeholder,
+    .letter{
+        width:45px;
+        height:45px;
+        font-size:22px;
+    }
+
+    #letters-container{
+        min-height:220px;
+    }
+
+    #message{
+        font-size:22px;
+    }
 }
 
-@media(max-width:700px){
+/* ===========================
+   SMALL PHONES
+=========================== */
 
-#placeholders-container{
+@media (max-width:360px){
 
-grid-template-columns:repeat(4,70px);
+    h1{
+        font-size:18px;
+    }
 
-}
+    #placeholders-container{
+        grid-template-columns:repeat(3,1fr);
+    }
 
-.placeholder,
-.letter{
+    .placeholder,
+    .letter{
+        width:40px;
+        height:40px;
+        font-size:20px;
+    }
 
-width:60px;
-height:60px;
-font-size:28px;
-
-}
-
-}
-
-@media(max-width:500px){
-
-#placeholders-container{
-
-grid-template-columns:repeat(3,60px);
-
-}
-
-.placeholder,
-.letter{
-
-width:55px;
-height:55px;
-font-size:24px;
-
-}
-
-h1{
-
-font-size:22px;
-
-}
-
+    #letters-container{
+        min-height:180px;
+    }
 }
